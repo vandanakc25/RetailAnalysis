@@ -20,6 +20,7 @@ pipeline {
             steps {
                 sh 'mkdir -p /var/jenkins_home/deployed'
                 sh 'cp retailproject.tar.gz /var/jenkins_home/deployed/'
+                sh 'ls -la /var/jenkins_home/deployed/'
             }
         }
     }
