@@ -13,13 +13,13 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh 'zip -r retailproject.zip .'
+                sh 'tar -czf retailproject.tar.gz .'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'mkdir -p /var/jenkins_home/deployed'
-                sh 'cp retailproject.zip /var/jenkins_home/deployed/'
+                sh 'cp retailproject.tar.gz /var/jenkins_home/deployed/'
             }
         }
     }
