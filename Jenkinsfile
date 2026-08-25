@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh 'tar -czf retailproject.tar.gz .'
+                sh 'tar --exclude=retailproject.tar.gz -czf retailproject.tar.gz .'
             }
         }
         stage('Deploy') {
