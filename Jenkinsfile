@@ -3,14 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip3 install --user pipenv --break-system-packages'
-                sh 'python3 -m pipenv --rm || exit 0'
-                sh 'python3 -m pipenv install'
+                sh 'pip3 install --break-system-packages pyspark pytest'
             }
         }
         stage('Test') {
             steps {
-                sh 'python3 -m pipenv run pytest'
+                sh 'python3 -m pytest'
             }
         }
         stage('Package') {
