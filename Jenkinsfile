@@ -1,28 +1,27 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                echo "Build completed successfully"
+                sh 'pip3 install --user pipenv'
+                sh 'python3 -m pipenv --rm || exit 0'
+                sh 'python3 -m pipenv install'
             }
         }
-
         stage('Test') {
             steps {
-                echo "Test completed successfully"
+                sh 'python3 -m pipenv run pytest'
             }
         }
-
         stage('Package') {
             steps {
-                echo "Package completed successfully"
+                sh 'zip -r retailproject.zip .'
             }
         }
-
         stage('Deploy') {
             steps {
-                echo "Deploy completed successfully"
+                sh 'mkdir -p /var/jenkins_home/deployed'
+                sh 'cp retailproject.zip /var/jenkins_home/deployed/'
             }
         }
     }
