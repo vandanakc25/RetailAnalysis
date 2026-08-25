@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip3 install --break-system-packages pyspark pytest'
+                sh 'pip3 install --break-system-packages --timeout 120 --retries 5 pyspark pytest'
             }
         }
         stage('Test') {
