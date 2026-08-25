@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip3 install --user pipenv'
+                sh 'pip3 install --user pipenv --break-system-packages'
                 sh 'python3 -m pipenv --rm || exit 0'
                 sh 'python3 -m pipenv install'
             }
